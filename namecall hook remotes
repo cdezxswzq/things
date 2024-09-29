@@ -1,0 +1,21 @@
+getgenv().block_messages = true;
+
+local replicatedStorageService = game:GetService("ReplicatedStorage")
+local remote = -- enter remote here
+
+local old_namecall;
+
+old_namecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
+    local self, args = ..., {select(2, ...)};
+    local method = string.lower(getnamecallmethod());
+
+    if typeof(self) == "Instance" and self.IsA(self, "RemoteEvent") then
+        if method == "fireserver" and self == remote then
+            if block_messages then
+                return;
+            end
+        end
+    end
+
+    return old_namecall(...);
+end))
