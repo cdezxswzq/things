@@ -6,7 +6,7 @@ local remote = -- enter remote here
 local old_namecall;
 
 old_namecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
-    local self, args = ..., {select(2, ...)};
+    local self, args = ..., {select(args, ...)};
     local method = string.lower(getnamecallmethod());
 
     if typeof(self) == "Instance" and self.IsA(self, "RemoteEvent") then
