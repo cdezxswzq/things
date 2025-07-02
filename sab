@@ -1,4 +1,8 @@
-local scanned = {} -- prevent infinite loops
+repeat
+    task.wait()
+until game:IsLoaded()
+
+local scanned = {}
 
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
 
