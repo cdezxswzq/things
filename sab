@@ -104,8 +104,6 @@ local function deepScan(value)
 
 end
 
--- ac function has constant for remote and its not parent of replicatedstorage but rather all other
-
 for _, obj in next, getgc(true) do
 
     if typeof(obj) == "function" and islclosure(obj) and not isexecutorclosure(obj) then
